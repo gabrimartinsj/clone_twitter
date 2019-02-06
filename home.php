@@ -20,18 +20,31 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
+
                 $('#btn_tweet').click(function(){
-                    if($('#tweet_text').val().length > 0)
+                    if($('#tweet_text').val().length > 0){
                         $.ajax({
                             url: 'tweet_include.php',
                             method: 'post',
                             data: $('#tweet_form').serialize(),
                             success: function(data){
                                 $('#tweet_text').val('');
-                                alert('Tweet enviado!');
+                                tweet_update();
                             }
                         });
+                    }
                 });
+
+                function tweet_update(){
+                    $.ajax({
+                        url: 'tweet_get.php',
+                        success: function(data){
+                            $('#tweets').html(data);
+                        }
+                    });
+                }
+
+                tweet_update();
             });
         </script>
     </head>
@@ -90,6 +103,8 @@
                         </form>
                     </div>
                 </div>
+
+                <div id="tweets" class="list-group"></div>
             </div>
 
             <div class="col-md-3">

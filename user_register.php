@@ -11,7 +11,7 @@
     $user_exists = false;
     $email_exists = false;
 
-    $sql = " select * from users where username = '$user'";
+    $sql = " SELECT * FROM users WHERE username = '$user'";
     if($id_result = mysqli_query($link, $sql)){
         $user_data = mysqli_fetch_array($id_result);
 
@@ -22,7 +22,7 @@
         echo 'Erro ao tentar localizar o registro de usuário.';
     }
 
-    $sql = " select * from users where email = '$email'";
+    $sql = " SELECT * FROM users WHERE email = '$email'";
     if($id_result = mysqli_query($link, $sql)){
         $user_data = mysqli_fetch_array($id_result);
 
@@ -43,7 +43,7 @@
         die();
     }
 
-    $sql = "insert into users(username, email, pass) values ('$user', '$email', '$pass')";
+    $sql = "INSERT INTO users(username, email, pass) VALUES ('$user', '$email', '$pass')";
 
     // Executes the query
     if(mysqli_query($link, $sql)){

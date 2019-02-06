@@ -13,7 +13,7 @@
     if($tweet_text != '' && $user_id != ''){
         $db_object = new database();
         $link = $db_object->mysql_connect();
-        $sql = " insert into tweet(id_user, tweet) values('$user_id', '$tweet_text') ";
+        $sql = " INSERT INTO tweets(user_id, tweet) VALUES ('$user_id', '$tweet_text') ";
 
         mysqli_query($link, $sql);
     }
