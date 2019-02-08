@@ -21,30 +21,31 @@
         <script type="text/javascript">
             $(document).ready(function(){
 
-                $('#btn_tweet').click(function(){
-                    if($('#tweet_text').val().length > 0){
+                $('#btn_search').click(function(){
+                    if($('#search_name').val().length > 0){
                         $.ajax({
-                            url: 'tweet_include.php',
+                            url: 'user_get.php',
                             method: 'post',
-                            data: $('#tweet_form').serialize(),
+                            data: $('#search_form').serialize(),
                             success: function(data){
-                                $('#tweet_text').val('');
-                                tweet_update();
+                                $('#users').html(data);
+
+                                $('.btn_follow').click(function(){
+                                    var user_follow_id = $(this).data('user_id');
+
+                                    $.ajax({
+                                        url: 'follow.php',
+                                        method: 'post',
+                                        data: { user_follow_id: user_follow_id  },
+                                        success: function(data){
+                                            alert('Follow feito!');
+                                        }
+                                    });
+                                });
                             }
                         });
                     }
                 });
-
-                function tweet_update(){
-                    $.ajax({
-                        url: 'tweet_get.php',
-                        success: function(data){
-                            $('#tweets').html(data);
-                        }
-                    });
-                }
-
-                tweet_update();
             });
         </script>
     </head>
@@ -65,6 +66,7 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="home.php">Voltar</a></li>
                         <li><a href="logoff.php">Sair</a></li>
                     </ul>
                 </div> <!--/.nav-collapse -->
@@ -93,28 +95,21 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form id='tweet_form' class="input-group">
-                            <input type="text" id='tweet_text' name='tweet_text' class="form-control" placeholder="O que está acontecendo agora?" maxlength="140" />
+                        <form id='search_form' class="input-group">
+                            <input type="text" id='search_name' name='search_name' class="form-control" placeholder="Buscar no Twitter?" maxlength="140" />
                             <span class="input-group-btn">
-                                <button id='btn_tweet' class="btn btn-default" type="button">
-                                    Tweetar
+                                <button id='btn_search' class="btn btn-default" type="button">
+                                    Buscar
                                 </button>
                             </span>
                         </form>
                     </div>
                 </div>
 
-                <div id="tweets" class="list-group"></div>
+                <div id="users" class="list-group"></div>
             </div>
 
             <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h4>
-                            <a href="user_search.php">Buscar</a>
-                        </h4>
-                    </div>
-                </div>
             </div>
         </div>
 

@@ -12,6 +12,7 @@
     $email_exists = false;
 
     $sql = " SELECT * FROM users WHERE username = '$user'";
+    
     if($id_result = mysqli_query($link, $sql)){
         $user_data = mysqli_fetch_array($id_result);
 
@@ -23,6 +24,7 @@
     }
 
     $sql = " SELECT * FROM users WHERE email = '$email'";
+
     if($id_result = mysqli_query($link, $sql)){
         $user_data = mysqli_fetch_array($id_result);
 

@@ -7,14 +7,14 @@
 
     require_once('db.class.php');
 
-    $tweet_text = $_POST['tweet_text'];
     $user_id = $_SESSION['user_id'];
+    $user_follow_id = $_POST['user_follow_id'];
 
-    if($tweet_text != '' && $user_id != ''){
+    if($user_follow_id != '' && $user_id != ''){
         $db_object = new database();
         $link = $db_object->mysql_connect();
-        
-        $sql = " INSERT INTO tweets(user_id, tweet) VALUES ('$user_id', '$tweet_text') ";
+
+        $sql = " INSERT INTO followers(user_id, user_follow_id) VALUES ($user_id, $user_follow_id) ";
 
         mysqli_query($link, $sql);
     }
