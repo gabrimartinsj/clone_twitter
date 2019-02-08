@@ -23,8 +23,8 @@
                 echo '<strong>'.$user_data['username'].'</strong><small> - '.$user_data['email'].'</small>';
 
                 echo '<p class="list-group-item-text pull-right">';
-                    echo '<button type="button" class="btn btn-default btn_follow" data-user_id="'.$user_data['id'].'">Follow</button>';
-                    echo '<button type="button" class="btn btn-primary btn_unfollow" data-user_id="'.$user_data['id'].'">Unfollow</button>';
+                    echo '<button type="button" id="btn_follow_'.$user_data['id'].'" class="btn btn-default btn_follow" data-user_id="'.$user_data['id'].'">Follow</button>';
+                    echo '<button type="button" id="btn_unfollow_'.$user_data['id'].'" class="btn btn-primary btn_unfollow" style="display:none" data-user_id="'.$user_data['id'].'">Unfollow</button>';
                 echo '</p>';
 
                 echo '<div class="clearfix"></div>';

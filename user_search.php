@@ -33,6 +33,9 @@
                                 $('.btn_follow').click(function(){
                                     var user_follow_id = $(this).data('user_id');
 
+                                    $('#btn_follow_'+user_follow_id).hide();
+                                    $('#btn_unfollow_'+user_follow_id).show();
+
                                     $.ajax({
                                         url: 'follow.php',
                                         method: 'post',
@@ -45,6 +48,9 @@
 
                                 $('.btn_unfollow').click(function(){
                                     var user_unfollow_id = $(this).data('user_id');
+
+                                    $('#btn_follow_'+user_unfollow_id).show();
+                                    $('#btn_unfollow_'+user_unfollow_id).hide();
 
                                     $.ajax({
                                         url: 'unfollow.php',
