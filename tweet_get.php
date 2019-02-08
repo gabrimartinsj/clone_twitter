@@ -11,8 +11,8 @@
 
     $db_object = new database();
     $link = $db_object->mysql_connect();
-    
-    $sql = " SELECT DATE_FORMAT(t.inclusion_date, '%d %b %Y %T') AS format_inclusion_date, t.tweet, u.username FROM tweets AS t JOIN users AS u ON (t.user_id = u.id) WHERE user_id = $user_id ORDER BY inclusion_date DESC ";
+
+    $sql = " SELECT DATE_FORMAT(t.inclusion_date, '%d %b %Y %T') AS format_inclusion_date, t.tweet, u.username FROM tweets AS t JOIN users AS u ON (t.user_id = u.id) WHERE user_id = $user_id OR user_id IN (SELECT user_follow_id FROM followers WHERE user_id = $user_id) ORDER BY inclusion_date DESC ";
 
     $id_result = mysqli_query($link, $sql);
 
