@@ -4,6 +4,43 @@
     if(!isset($_SESSION['username'])){
         header('Location: index.php?error=1');
     }
+
+    $user_id = $_SESSION['user_id'];
+
+    require_once('db.class.php');
+
+    $db_object = new database();
+    $link = $db_object->mysql_connect();
+
+    // Tweet Score //
+
+    $sql = " SELECT COUNT(*) AS tweets_amount FROM tweets WHERE user_id = $user_id ";
+
+    $id_result = mysqli_query($link, $sql);
+
+    $tweets_amount = 0;
+
+    if($id_result){
+        $user_data = mysqli_fetch_array($id_result, MYSQLI_ASSOC);
+        $tweets_amount = $user_data['tweets_amount'];
+    } else {
+        echo 'Erro ao executar a consulta.';
+    }
+
+    // Follower Score //
+
+    $sql = " SELECT COUNT(*) AS followers_amount FROM followers WHERE user_follow_id = $user_id ";
+
+    $id_result = mysqli_query($link, $sql);
+
+    $followers_amount = 0;
+
+    if($id_result){
+        $user_data = mysqli_fetch_array($id_result, MYSQLI_ASSOC);
+        $followers_amount = $user_data['followers_amount'];
+    } else {
+        echo 'Erro ao executar a consulta.';
+    }
 ?>
 
 <!DOCTYPE HTML>
@@ -80,11 +117,11 @@
                         <hr />
 
                         <div class="col-md-6">
-                            TWEETS <br /> 1
+                            TWEETS <br /> <?= $tweets_amount ?>
                         </div>
 
                         <div class="col-md-6">
-                            FOLLOWERS <br /> 1
+                            FOLLOWERS <br /> <?= $followers_amount ?>
                         </div>
                     </div>
                 </div>
