@@ -24,6 +24,7 @@
 
                 echo '<p class="list-group-item-text pull-right">';
                     echo '<button type="button" class="btn btn-default btn_follow" data-user_id="'.$user_data['id'].'">Follow</button>';
+                    echo '<button type="button" class="btn btn-primary btn_unfollow" data-user_id="'.$user_data['id'].'">Unfollow</button>';
                 echo '</p>';
 
                 echo '<div class="clearfix"></div>';

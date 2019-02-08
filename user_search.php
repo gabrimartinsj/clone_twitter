@@ -42,6 +42,19 @@
                                         }
                                     });
                                 });
+
+                                $('.btn_unfollow').click(function(){
+                                    var user_unfollow_id = $(this).data('user_id');
+
+                                    $.ajax({
+                                        url: 'unfollow.php',
+                                        method: 'post',
+                                        data: { user_unfollow_id: user_unfollow_id  },
+                                        success: function(data){
+                                            alert('Unfollow feito!');
+                                        }
+                                    });
+                                });
                             }
                         });
                     }
