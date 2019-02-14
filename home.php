@@ -109,7 +109,7 @@
         </nav>
 
         <div class="container">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h4><?= $_SESSION['username'] ?></h4>
@@ -144,7 +144,7 @@
                 <div id="tweets" class="list-group"></div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h4>

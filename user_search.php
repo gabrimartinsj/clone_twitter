@@ -77,9 +77,7 @@
                                         url: 'follow.php',
                                         method: 'post',
                                         data: { user_follow_id: user_follow_id  },
-                                        success: function(data){
-                                            alert('Follow feito!');
-                                        }
+                                        success: function(data){}
                                     });
                                 });
 
@@ -93,9 +91,7 @@
                                         url: 'unfollow.php',
                                         method: 'post',
                                         data: { user_unfollow_id: user_unfollow_id  },
-                                        success: function(data){
-                                            alert('Unfollow feito!');
-                                        }
+                                        success: function(data){}
                                     });
                                 });
                             }
@@ -130,7 +126,7 @@
         </nav>
 
         <div class="container">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h4><?= $_SESSION['username'] ?></h4>
@@ -165,7 +161,7 @@
                 <div id="users" class="list-group"></div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-1">
             </div>
         </div>
 

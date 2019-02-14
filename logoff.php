@@ -3,5 +3,5 @@
     unset($_SESSION['username']);
     unset($_SESSION['email']);
 
-    echo 'Sessão finalizada!';
+    header('Location: index.php');
 ?>
